@@ -1,0 +1,37 @@
+{block title}
+    <title>TachoScan s.r.o.: interní správa</title>
+{/block}
+
+{block content}
+    <h3><a n:href="Distribution:" rel="tooltip" class = "btn btn-mini toolTipUp backBtn" title = "Zpět"><i class=" icon-arrow-left"></i> Zpět</a> Distribuce produktu {$productname}</h3>
+    <div class="tableWrapper">   
+        <a n:href="refresh!, id => $productid" rel="tooltip" class = "btn btn-mini refreshButton toolTipUp" title = "Obnovit stránku"><i class="icon-refresh"></i></a>
+        <a href="#" onclick="showUrlInDialog({link Distribution:addEditList, isEdited => false, id => $productid, name => $productname},'Přidání distribuce',400,465); return false;" class = "btn btn-success btn-mini toolTipUp addButton" title = "Přidat nový záznam"><i class="icon-plus"></i></a>
+        <table class="table table-striped table-bordered table-condensed distributionTable">                         
+            {if $list}
+                <tr><th class = "dateCol">Datum</th><th>Zákazník / firma</th><th class = "lastCol"></th></tr>
+                {foreach $list as $listed}                                                    
+                <tr>
+                    <td class = "dateCol"><a n:href="Distribution:viewlist, id => $listed->id">{=date('d.m.Y',strtotime($listed->date))}</a></td><td>{ifset $listed->name}{$listed->name}{else}<p class="neuveden">zákazník nenalezen</p>{/ifset}</td>
+                    <td class = "lastCol"> <a href="#" onclick="showUrlInDialog({link Distribution:addEditList, id => $listed->id, isEdited => true},'Editace záznamu distribuce',400,465);" rel="tooltip" title="Editovat záznam" class = "btn btn-mini toolTipDown"><i class="icon-pencil"></i></a> <a href="{link deleteList!, id => $listed->id}" title="Smazat záznam" data-confirm="Opravdu chcete smazat záznam s ID {$listed->id}?" rel="tooltip" class = "btn btn-danger btn-mini toolTipDown"><i class="icon-trash"></i></a></td>
+                </tr>
+                {/foreach}                                
+            {else}
+                <br /><span class="noProductListed">Nejsou k dispozici žádná data</span>
+            {/if}                
+        </table>  
+        {control pageChooser}
+    </div>
+
+    <div class="tableWrapperRight">
+        <table class="table table-striped table-bordered table-condensed">   
+            <tr><th><i class="icon-signal"></i> Statistiky</th></tr>
+            <tr><td>
+            <ul>  
+                <li><i class="icon-shopping-cart"></i>Distribucí produktu: {$distcount}</li>
+            </ul></td></tr>                 
+        </table>            
+    </div>
+    
+    <div class="cleaner"></div>
+{/block}

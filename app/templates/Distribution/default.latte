@@ -1,0 +1,37 @@
+{block title}
+    <title>TachoScan s.r.o.: interní správa</title>
+{/block}
+    
+{block content}
+    <div>
+        <h3>Produkty</h3>
+        <div class="tableWrapper">
+            <a n:href="refresh!" rel="tooltip" class = "btn btn-mini refreshButton toolTipUp" title = "Obnovit stránku"><i class="icon-refresh"></i></a>
+            <a href="#" onclick="showUrlInDialog('add-edit','P\u0159idání produktu',400,430); return false;" class = "btn btn-success btn-mini toolTipUp addButton" title = "Přidat nový produkt"><i class="icon-plus"></i></a>
+            <table class="table table-striped table-bordered table-condensed">                
+                {if $products}
+                    <tr><th class="nameCol">Název produktu</th><th>Verze</th><th class = "lastCol"></th></tr>
+                    {foreach $products as $product}                              
+                            <tr><td class="nameCol"><a n:href="Distribution:list, productid => $product->id">{$product->name}</a></td><td>{$product->version}</td><td class = "lastCol"> <a href="#" onclick="showUrlInDialog({link Distribution:addEdit, id => $product->id, isEdited => true},'Editace produktu',400,430);" rel="tooltip" title="editovat produkt" class = "btn btn-mini toolTipDown"><i class="icon-pencil"></i></a> <a href="{link delete!, id => $product->id}" title="smaže kompletní produkt včetně distribucí" data-confirm="Opravdu chcete smazat produkt {$product->name} a s tím i všechny spojené distribuce?" rel="tooltip" class = "btn btn-danger btn-mini toolTipDown"><i class="icon-trash"></i></a></td></tr>                            
+                            
+                    {/foreach}                                
+                    
+                {else}
+                    <tr><td><br /><span class="noProductListed">Nejsou k dispozici žádná data</span></td></tr>
+                {/if}
+            </table>        
+        </div>
+
+        <div class="tableWrapperRight">
+            <table class="table table-striped table-bordered table-condensed">   
+                <tr><th><i class="icon-signal"></i> Statistiky</th></tr>
+                <tr><td>
+                <ul>  
+                    <li><i class="icon-th-large"></i>Produktů: {$productCount}</li>
+                    <li><i class="icon-shopping-cart"></i>Celkem distribucí: {$allcount}</li>
+                </ul></td></tr>                 
+            </table>            
+        </div>
+        <div class="cleaner"></div>
+    </div>
+{/block}

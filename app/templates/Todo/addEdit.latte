@@ -1,0 +1,51 @@
+{extends none}
+
+<head>   
+    <!-- JavaScript + FIXES for Ajax -->
+    <script type="text/javascript" src="{$basePath}/js/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="{$basePath}/js/jquery-ui-1.8.17.custom.min.js"></script>
+    <script type="text/javascript" src="{$basePath}/js/jquery.ui.datepicker-cs.js"></script>
+    <script type="text/javascript" src="{$basePath}/js/inputfix.datepicker.js"></script>   
+</head>
+
+
+{block content}
+    <div class = "addEditTodo">
+            {form addEditTodo class => 'well'}
+                <table id = "addEdit">
+                <tr>
+                    <td colspan="2" id="createdByRow">{ifset $prevUserName}Úkol <strong>předán</strong> od uživatele: {$prevUserName}{else}Úkol vytvořen mnou{/ifset}</td>                   
+                </tr>
+                <tr>
+                    <td colspan="2">{label subject /}{input subject class => "span3", autofocus => TRUE,
+                                placeholder => "Předmět.."}</td>
+                </tr>
+                      
+                <tr>
+                    <td colspan="2">{label tobedone /}{input tobedone, autofocus => FALSE}</td>       
+                </tr>                
+               
+                <tr>
+                    <td>{input fwto_id, id => "fwto_id"}{label fwto /}{input fwto class => "span2", id => "fwto"}</td> 
+                    <td>
+                        <a id = "todoFwButton" href="javascript:void(0);"
+                            title="Předání úkolu"
+                            onClick='window.open({plink User:fwselector},"fwto","width=320,height=200,0,status=0,");' rel="tooltip" class="btn custSelectorButton">
+                            <i class="icon-list-alt"></i>
+                        </a>
+                    </td>
+                </tr>
+                
+
+                <tr>
+                    <td colspan="2">{label notes /}{input notes}</td>                   
+                </tr>
+                    
+                <tr>
+                     <td colspan="2" class="submitSection"><button id="btn-close" class="btn btn-danger" type="button">Zavřít</button> {label addSave /}{input addSave}</td>
+                </tr>
+                </table>    
+            {/form}
+        <div class="cleaner"></div>
+    </div>
+{/block}

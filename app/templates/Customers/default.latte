@@ -1,0 +1,44 @@
+{block title}
+    <title>TachoScan s.r.o.: interní správa</title>
+{/block}
+
+{block content}
+    <div id="customerListing">
+        {if $isSearch == false}<h3>Zákazníci</h3>{else}<h3><a n:href="Customers:" rel="tooltip" class = "btn btn-mini toolTipUp" title = "Zpět"><i class=" icon-arrow-left"></i> Zpět</a> Vyhledávání zákazníka</h3>{/if}
+        <div class="tableWrapper">           
+            <a n:href="Customers:" rel="tooltip" class = "btn btn-mini refreshButton toolTipUp" title = "Obnovit stránku"><i class="icon-refresh"></i></a>
+            <a href="#" onclick="showUrlInDialog('search-cust','Hledání zákazníka',350,360); return false;" class = "btn btn-mini toolTipUp btn-info addButton" title = "Vyhledávání zákazníka"><i class="icon-search"></i></a>
+            <a href="#" onclick="showUrlInDialog('add-edit','P\u0159idání zákazníka',456,585); return false;" class = "btn btn-success btn-mini toolTipUp addButton" title = "Přidat nového zákazníka"><i class="icon-plus"></i></a>
+                <table class="table table-striped table-bordered table-condensed">
+                    {if $customers}
+                        {if $isSearch == false}
+                            <tr><th class="idCol">ID</th><th class="nameCol">Název</th><th>Adresa</th><th class = "hwKeyCol">HW klíč</th><th class = "lastCol"></th></tr>
+                        {else}
+                            <tr><th class="idCol">ID</th><th class="nameCol">{if $searchedCustomer === NULL}Název{else}Výsledky pro výraz „{$searchedCustomer}“{/if}</th><th>{if $adressSearched === NULL}Adresa{else}Výsledky pro adresu „{$adressSearched}“{/if}</th><th class = "hwKeyCol">{if $hwKeySearched === NULL}HW klíč{else}HW klíč „{$hwKeySearched}“{/if}</th><th class = "lastCol"></th></tr>
+                        {/if}
+                        
+                        {foreach $customers as $customer}
+                                <tr><td class="idCol">{$customer->id}</td><td class="nameCol"><a n:href="Customers:view, id => $customer->id, backlink => $backlink">{$customer->name}</a></td><td>{$customer->adress}</td><td class = "hwKeyCol">{$customer->hwkeynum}</td><td class = "lastCol"> <a href="#" onclick="showUrlInDialog({link Customers:add-edit, id => $customer->id, isEdited => true, backlink2 => $backlink},'Editace zákazníka',456,585);" rel="tooltip" title="Editovat zákazníka" class = "btn btn-mini toolTipDown"><i class="icon-pencil"></i></a> <a href="{link delete!, id => $customer->id}" title="Smazat zákazníka" data-confirm="Opravdu chcete smazat zákazníka {$customer->name}?" rel="tooltip" class = "btn btn-danger btn-mini toolTipDown"><i class="icon-trash"></i></a></td></tr>                                                            
+                        {/foreach}                                
+                    {else}
+                        <span class="noProductListed">{if $isSearch == false}Nejsou k dispozici žádná data. Což je špatně!{else}Nejsou k dispozici žádné výsledky pro výrazy Název: „{$searchedCustomer}„, adresu: „{$adressSearched}„ a číslo klíče „{$hwKeySearched}“</cite>{/if}</span>       
+                    {/if}
+                    
+               </table> 
+               {control pageChooser}  
+        </div>        
+        
+        <div class="tableWrapperRight">
+            <table class="table table-striped table-bordered table-condensed">   
+                <tr><th><i class="icon-signal"></i> Statistiky</th></tr>
+                <tr><td>
+                <ul>  
+                    <li><i class="icon-th-large"></i>Počet zákazníků: {$allcustomercount}</li>
+                     {if $isSearch == true}<li><i class="icon-search"></i>Počet vyhledaných: {$customercount}</li>{/if}
+                </ul></td></tr>                 
+            </table>            
+        </div>
+               
+        <div class="cleaner"></div>
+    </div>
+{/block}

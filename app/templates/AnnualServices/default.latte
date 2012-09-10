@@ -1,0 +1,40 @@
+{block title}
+    <title>TachoScan s.r.o.: interní správa</title>
+{/block}
+
+{block content}
+    <div id="anServices">
+        <h3>Roční servisy</h3>
+        <div class="tableWrapper">
+            <a n:href="AnnualServices:" rel="tooltip" class = "btn btn-mini refreshButton toolTipUp" title = "Obnovit stránku"><i class="icon-refresh"></i></a>
+            <a href="#" onclick="showUrlInDialog('add-edit','P\u0159idání servisu',400,490); return false;" class = "btn btn-success btn-mini toolTipUp addButton" title = "Přidat nový roční servis"><i class="icon-plus"></i></a>
+            <table class="table table-striped table-bordered table-condensed">    
+                {if $services}
+                    <tr><th class = "dateCol">Datum aktivace</th><th class = "dateCol">Datum konce</th><th>Název firmy</th><th class = "lastCol"></th></tr>
+                    {foreach $services as $service}
+                        {var $dateEnd = date('d.m.Y', strtotime($service->datestart.' +1 years'))}
+                        <tr {if strtotime($service->datestart.' +1 years')< time()}class = "overDeadLine"{/if}>
+                            <td class = "dateCol"><a href="#" onclick="showUrlInDialog({link AnnualServices:addEdit, id => $service->anservice_id, isEdited => true},'Zobrazení a editace servisu',400,490);">{=date('d.m.Y',strtotime($service->datestart))}</a></td><td class = "dateCol">{$dateEnd}</td><td>{ifset $service->name}{$service->name}{else}<p class="neuveden">zákazník nenalezen</p>{/ifset}</td>
+                            <td class = "lastCol"> <a href="#" onclick="showUrlInDialog({link AnnualServices:addEdit, id => $service->anservice_id, isEdited => true},'Editace servisu',400,490);" rel="tooltip" title="Editovat servis" class = "btn btn-mini toolTipDown"><i class="icon-pencil"></i></a> <a href="{link delete!, id => $service->anservice_id}" title="Smazat roční servis" data-confirm="Opravdu chcete smazat roční servis firmy {$service->name}?" rel="tooltip" class = "btn btn-danger btn-mini toolTipDown"><i class="icon-trash"></i></a></td>
+                        </tr>                        
+                    {/foreach}                                
+                {else}
+                    <span class="noProductListed">Nejsou k dispozici žádná data</span>
+                {/if}
+            </table> 
+            {control pageChooser}
+        </div>
+        
+        <div class="tableWrapperRight">
+            <table class="table table-striped table-bordered table-condensed">   
+                <tr><th><i class="icon-signal"></i> Statistiky</th></tr>
+                <tr><td>
+                <ul>  
+                    <li><i class="icon-list-alt"></i>Aktivních servisů: {$servicesCount}</li>
+                </ul></td></tr>                 
+            </table>            
+        </div>
+
+        <div class="cleaner"></div>
+    </div>
+{/block}

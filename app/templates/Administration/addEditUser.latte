@@ -1,0 +1,24 @@
+{extends none}
+
+{block content}
+    <div>
+            {form addEditUser class => 'well'}
+                <table id = "addEdit">
+                <tr>
+                    <td colspan="2">{label username /}{input username class => "span2", autofocus => TRUE,
+                                placeholder => "uživatel. jméno"}
+                </tr> 
+                <tr>
+                    <td colspan="2">{label password /}{input password class => "span2"}
+                </tr> 
+                <tr>
+                    <td colspan="2">{label acl /}{input acl}
+                </tr> 
+                <tr>              
+                    <td colspan="2" class="submitSection"><br />{label addSave /}{input addSave}</td>
+                </tr>
+                </table>    
+            {/form}
+        <div class="cleaner"></div>
+    </div>
+{/block}

@@ -1,0 +1,54 @@
+{block title}
+    <title>TachoScan s.r.o.: interní správa</title>
+{/block}
+    
+{block head}
+    <!-- Google Maps API -->
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+{/block}
+    
+{block content}
+    <div>
+        <h3><a href="{link back!}" rel="tooltip" class = "btn btn-mini toolTipUp backBtn" title = "Zpět"><i class=" icon-arrow-left"></i> Zpět</a> Zobrazení zákazníka</h3>
+        <div class="tableWrapperFull">   
+            <a href="#" onclick="showUrlInDialog({link Customers:add-edit, id => $data->id, isEdited => true, backlink2 => $backlink2},'Editace zákazníka',456,585); return false;" class = "custEditFromListing btn btn-mini toolTipDown" title = "Editovat zákazníka"><i class="icon-pencil"></i></a>
+            <table class="custView table table-striped table-bordered table-condensed distributionTable">                         
+                    <tr><th colspan="2">Zákazník</th></tr>                                                 
+                    <tr>
+                        <td>
+                            <br />
+                            <p><i class="icon-user"></i><strong>Název / jméno:</strong> {$data->name}</p>
+                            <p><i class="icon-user"></i><strong>Školící středisko:</strong> {if $data->trcenter == true}Ano{else}Ne{/if}</p>
+                            <p><i class="icon-tag"></i><strong>IČ:</strong> {$data->ic}</p>
+                            <p><i class="icon-tags"></i><strong>DIČ:</strong> {$data->dic}</p>
+                            <br />
+                            <p><i class="icon-home"></i><strong>Adresa:</strong></p> <div id="adresa">{$data->adress}</div>
+                            <br />
+                            <p><i class="icon-comment"></i><strong>Tel.:</strong> {$data->tel}</p>
+                            <p><i class="icon-comment"></i><strong>Tel. 2 (mobil):</strong> {$data->tel2}</p>
+                            <p><i class="icon-envelope"></i><strong>e-Mail:</strong> {$data->email}</p>
+                            <br />
+                            <p><i class="icon-lock"></i><strong>HW klíč(e):</strong> {$data->hwkeynum}</p>
+                            <p><i class="icon-exclamation-sign"></i><strong>Aktivní roční servis:</strong> {if $hasService == true}Ano, končí {=date('d.m.Y', strtotime($serviceStarts.' +1 years'))} {else}Ne{/if}</p>
+                            <p><i class="icon-asterisk"></i><strong>Poznámky:</strong></p><p class="nextLine">{$data->notes}</p>
+                            <br />
+                            <p><i class="icon-flag"></i><strong>Poslední akce:</strong>
+                            {if $recentactions}
+                                <ul>
+                                {foreach $recentactions as $action}
+                                    <li><a href="#" onclick="showUrlInDialog({link Actions:addEdit, id => $action->action_id, isEdited => true, backlink => $backlink2},'Zobrazení a editace akce',400,545);">{=date('d.m.Y',strtotime($action->date))}: {$action->subject}</a></li>
+                                {/foreach}
+                                </ul>    
+                            {/if}
+                        </td>
+                        <td> 
+                            <div id="mapContainer"></div>
+                        </td> 
+                    </tr>
+
+            </table>  
+        </div>      
+    </div>   
+    
+    <div class="cleaner"></div>
+{/block}

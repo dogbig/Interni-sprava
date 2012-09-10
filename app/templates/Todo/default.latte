@@ -1,0 +1,42 @@
+{block title}
+    <title>TachoScan s.r.o.: interní správa</title>
+{/block}
+
+{block content}
+    <div id="todoList">
+        <h3>Úkoly</h3>
+        <div class="tableWrapper">
+            <a n:href="Todo:" rel="tooltip" class = "btn btn-mini refreshButton toolTipUp" title = "Obnovit stránku"><i class="icon-refresh"></i></a>
+            <a href="{link deleteDone!}" data-confirm="Opravdu cchcete smazat dokončené úkoly?" rel="tooltip" class = "btn btn-mini btn-warning refreshButton toolTipUp addButton" title = "Smazat dokončené úkoly"><i class="icon-fire"></i></a>
+            <a href="#" onclick="showUrlInDialog('add-edit','P\u0159idání úkolu',400,495); return false;" class = "btn btn-success btn-mini toolTipUp addButton" title = "Přidat nový úkol"><i class="icon-plus"></i></a>
+            <table class="table table-striped table-bordered table-condensed">    
+                {if $myTodo}
+                    <tr><th class = "dateCol">Datum přidání</th><th class = "dateCol">Datum splnění</th><th>Předmět</th><th class = "lastCol"></th></tr>
+                    {foreach $myTodo as $myTodoListed}
+                        <tr {if strtotime($myTodoListed->tobedone)< time() & $myTodoListed->done == false}class = "overDeadLine"{/if}{if $myTodoListed->done == true}class = "done"{/if}>
+                            <td class = "dateCol">{=date('d.m.Y',strtotime($myTodoListed->created))}</td><td class = "dateCol">{=date('d.m.Y',strtotime($myTodoListed->tobedone))}</td><td><a href="#" onclick="showUrlInDialog({link Todo:addEdit, id => $myTodoListed->todo_id, isEdited => true},'Zobrazení a editace úkolu',400,495);">{$myTodoListed->subject}</a></td>
+                            <td class = "lastCol"> <a href="#" onclick="showUrlInDialog({link Todo:addEdit, id => $myTodoListed->todo_id, isEdited => true},'Editace úkolu',400,495);" rel="tooltip" title="Editovat úkol" class = "btn btn-mini toolTipDown"><i class="icon-pencil"></i></a> <a href="{link deleteMy!, id => $myTodoListed->todo_id}" title="Smazat úkol" data-confirm="Opravdu chcete smazat úkol s předmětem {$myTodoListed->subject}?" rel="tooltip" class = "btn btn-danger btn-mini toolTipDown"><i class="icon-trash"></i></a> {if $myTodoListed->done == false}<a href="{link gotDone!, id => $myTodoListed->todo_id}" title="Dokončit úkol" rel="tooltip" class = "btn btn-success btn-mini toolTipDown"><i class="icon-ok"></i></a>{else}<a href="{link gotDone!, id => $myTodoListed->todo_id, done => false}" title="Zrušit příznak dokončení" rel="tooltip" class = "btn btn-warning btn-mini toolTipDown"><i class="icon-flag"></i></a>{/if}</td>
+                            
+                        </tr>                        
+                    {/foreach}                                
+                {else}
+                    <span class="noProductListed">Nejsou k dispozici žádná data</span>
+                {/if}
+            </table> 
+            {control pageChooser}
+        </div>
+        
+        <div class="tableWrapperRight">
+            <table class="table table-striped table-bordered table-condensed">   
+                <tr><th><i class="icon-signal"></i> Statistiky</th></tr>
+                <tr><td>
+                <ul>  
+                    <li><i class="icon-list-alt"></i>Úkolů: {$myCount}</li>
+                    <li><i class="icon-ok"></i>Splněno: {$myCountDone}</li>
+                </ul></td></tr>                 
+            </table>            
+        </div>
+
+        <div class="cleaner"></div>
+    </div>
+{/block}

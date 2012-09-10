@@ -1,0 +1,874 @@
+/* CSS by TUL FM student Michal Charvát - www.tul.cz */
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    border: none;    
+}
+
+html, body { 
+    height: 100%; 
+    font: 16px "Trebuchet MS", "Geneva CE", lucida, sans-serif;
+    min-width:800px;
+    color: #333;
+    background-color: #fff;
+    margin:0;
+}
+
+a {
+    color: #003366;
+    text-decoration: none;
+    background: none;
+}
+
+a:hover {
+    color: #003366;
+    text-decoration: underline;
+    background: none;
+}
+
+.spinner {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-left: -50px; 
+    margin-top: -50px; 
+    text-align:center;
+    z-index:1234;
+    overflow: auto;
+    width: 100px; 
+    height: 102px; 
+}
+
+.transparent { background:transparent !important; }
+
+
+.neuveden {
+    font-weight: normal;
+    font-style: italic;
+    color: #821414;
+    display: inline;
+}
+
+.msgbox {
+   padding-left: 10px;
+}
+
+#logo {
+    position: absolute; 
+    top: 17px; 
+    left: 10px; 
+}
+
+#logonFlashesh {
+    display: none;
+}
+
+#logonFlashesh #dialogCloser1  {
+    margin-top:10px !important;
+    float:right !important;
+}
+
+h1 {
+    font-size: 20px !important;
+    margin-left: 10px !important;
+    padding-top: 22px !important;
+    color: #3484D2 !important;
+}
+
+#header h1 {
+    margin-left: 147px !important; 
+}
+
+
+h2 {
+    margin-top: 5px;
+    font-size: 16px;
+    margin-bottom: 3px;
+    color: #3484D2;
+}
+
+h3 {
+    margin-top: 5px !important;
+    margin-left: 5px !important;
+    font-size: 14px;
+    margin-bottom: 3px;
+    color: #3484D2;
+}
+
+
+.input-mini {
+    margin-top: 0px !important;
+    height:15px !important;
+}
+
+.input-mini + .input-mini{
+    margin-left:10px !important;
+}
+
+#loginBox .btn-mini  {
+    float:right !important;
+    margin-right: 10px !important;
+}
+
+#loginBox .btn-logout  {
+    margin-top: 10px !important;
+    margin-right: 10px !important;
+}
+
+#loginBox i  {
+    margin-right: 3px !important;
+}
+
+#cmp {
+    float:right;
+}
+
+#custSelectorButton  {
+    margin-top:14px;
+    float:left;
+}
+
+#custSelectorButton i,#todoFwButton i  {
+    margin-top:2px;
+}
+
+#todoFwButton  {
+    margin-top:14px !important;
+    float:left;
+}
+
+#todoList .lastCol  {
+    width: 102px !important; 
+    text-align: right;
+}
+#todoList .btn + .btn +.btn {
+    margin-left: 7px;
+}
+
+#todoList .done, #todoList .done td {
+    background-color: #CCFFCC !important;
+}
+
+#todoList .done:hover, #todoList .done:hover td {
+    background-color: #8FFF8F !important;
+}
+
+#todoList .overDeadLine, #todoList .overDeadLine td, #anServices .overDeadLine td {
+    background-color: #FFB3B3 !important;
+}
+
+#todoList .overDeadLine:hover, #todoList .overDeadLine:hover td, #anServices .overDeadLine:hover td {
+    background-color: #FF7575 !important;
+}
+
+
+.backBtn  {
+    margin-top: -3px;
+}
+
+#nette-debug-bar {
+    height: 21px;
+}
+
+.errorTitle {
+    margin-left: 0px;
+}
+
+.error{
+    margin-left: 10px;
+    margin-bottom: 10px;
+    color: red;
+}
+
+.geeksText {
+    margin-top: 10px;
+}
+
+#header {
+    background-image: url(../images/grid-18px-masked.png);
+    height: 80px;
+    width: 100%;
+    background-color: #FFFFFF;
+    margin-bottom: -4px;
+}
+
+#header h1 {
+    margin-top: 0px;
+
+}
+
+
+#loginBox {    
+    height: 75px;
+    float: right;
+    background: url('../images/loginBoxBg.png') no-repeat;
+    width: 260px;
+    margin-right:0px;
+}
+
+#loggedName {    
+    height: 20px;
+    float: right;
+    width: 160px;
+    margin-right:12px;
+    text-align: left;
+    padding-top: 9px; 
+    color: #444444;
+
+}
+
+#loggedName p {  
+    margin-bottom: 0px !important; 
+    margin-right:10px !important;
+    text-align: right !important;
+}
+
+#smallButton { 
+    margin-top:10px;
+    margin-right:-3px;
+    background: url('../images/buttonSmall.png') no-repeat;
+    color: #f6f6f6;
+    height: 28px;
+    float: right;
+    width: 112px;
+    text-align: center;
+    padding-top: 3px;  
+}
+
+#smallButton:hover {  
+    background: url('../images/buttonSmallAct.png') no-repeat;
+    text-decoration: none;
+    color: white;
+}
+
+#smallButton a {   
+    text-decoration: none;
+}
+
+#addEdit td + td {   
+    width: 400px !important;
+    text-align: right;
+}
+
+#addEdit td + td label {   
+    padding-right: 33px;
+}
+
+.well {   
+    margin-top: 10px !important;
+}
+
+#addEdit .submitSection {   
+    text-align: right;
+    margin-top: 5px;
+}
+
+#addEdit textarea {   
+    width: 325px !important;
+}
+
+#addEdit #addEditListFix textarea {   
+    width: 324px !important;
+    height: 100px !important;
+}
+
+
+#addEdit .addEditCustAdrFix, #addEdit .addEditCustNoteFix {   
+    width: 380px !important;
+}
+
+
+#addEdit .addEditCustAdrFix {   
+    height: 30px !important;
+}
+
+#addEdit .addEditCustNoteFix {   
+    height: 40px !important;
+}
+
+.addEditCust table {   
+    max-width: 417px !important;
+}
+
+.addEditCust table td + td label {
+    padding-right: 103px !important;
+}
+
+.addEditCust .addEditCuSecTelFix {
+    padding-right: 66px !important;
+}
+
+.addEditCust .dic2 {
+    padding-right: 143px !important;
+}
+
+.addEditCust .btn {
+    margin-top: 8px !important;
+}
+
+.addEditCust .rightLabel, .searchBoxFixer .rightLabel  {
+    display: inline-block !important;
+    padding-bottom: 15px !important;
+    margin-left: 10px !important;
+}
+
+.addEditCust .checkbox, .searchBoxFixer .checkbox {
+    margin-top: -4px !important;
+}
+
+.searchBoxFixer table, table tr {
+    width: 100%;
+}
+
+.addEditTodo textarea {   
+    width: 324px !important;
+    height: 100px !important;
+}
+
+.addEditTodo .btn {   
+    margin-top: 5px !important;
+}
+
+.addEditTodo #createdByRow {   
+    padding-bottom: 7px !important;
+}
+
+
+#ikonka {
+    margin-top: 15px;
+}
+
+#wrapper {
+    padding-left: 10px;
+}
+
+.tablewrapperSelector {
+
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+}
+
+#customerListing .idCol {
+    text-align: center;
+    width: 17px;
+}
+
+#customerListing .hwKeyCol {
+    text-align: center;
+    width: 80px;
+}
+
+#userListing table {
+    width: 270px !important;
+}
+
+#userListing .idCol {
+    text-align: center;
+    width: 17px;
+}
+
+#userListing h3 {
+    margin-bottom: 10px !important;
+}
+
+#userPan #dialogCloser1 {
+   position: relative;
+   left: 220px;
+}
+
+
+
+
+
+
+.custView i, .listView i {
+    margin-right: 4px !important;
+    margin-left: 5px !important;
+    margin-top: 1px !important;
+}
+
+.custView #adresa {
+    margin-left: 23px;
+    margin-top: -2px;
+}
+
+.custView .nextLine, .listView .nextLine {
+    margin-left: 23px;
+    margin-top: -4px;
+}
+
+.custView ul {
+    margin-top: -4px;
+    margin-left: 35px;
+}
+
+
+
+.listView {
+
+}
+
+.nameCol {
+    text-align: left;
+    width: 350px;
+}
+
+#Menu {
+    padding-left: 15px;
+    background: url('../images/menu.png') repeat-x;
+    margin-left: 0px;
+    margin-top: 5px;
+    height:40px;
+}
+
+#Menu a {
+    font-size: 15px !important;
+    padding-top: 10px;
+    padding-bottom: 12px;
+    padding-right: 10px;
+    padding-left: 10px;
+    line-height: 2.5em;
+    margin-right: 10px;
+    color: white;
+    text-decoration: none;
+}
+
+#Menu a:hover {
+    padding-top: 10px;
+    padding-bottom: 12px;
+    line-height: 2.5em;
+    margin-right: 10px;
+    height:56px;
+    display: inline;
+    color: white;
+    text-decoration: none;
+    background: url('../images/menu_hover.png') repeat-x
+}
+
+#Menu .current {
+    background: url('../images/menu_act.png') repeat-x;
+    height:56px;
+    display: inline;
+}
+
+
+#content {
+    margin-top: 10px;
+}
+
+#progress {
+    width: 200px;
+    height: 35px;
+    background: url('../images/progress_bg.png') no-repeat;
+}
+
+#progressStep {
+    margin-left:1px;
+    line-height: 2.0em;
+    color: white;
+    padding-left: 4px;
+    width: 30px;
+    font-size: 15px;
+    height: 35px;
+    text-align: left;
+    background: url('../images/progress_step.png') repeat-x;
+}
+
+.tableWrapper .table-bordered, .tableWrapperRight .table-bordered  {
+    border: 2px solid #DDD !important;
+}
+
+
+#about {
+    text-align: center;
+    color: #444444;
+    font-size: 10px;
+    margin-top: -6px;
+}
+
+.refreshButton {
+    margin-right: 0px !important;
+    float:right;
+}
+
+
+.editButton {
+    background: url('../images/edit_small.png') no-repeat;  
+    width:29px;
+    height:29px;  
+    margin-top: 6px; 
+    margin-right: -8px;
+    float:right;
+
+}
+
+
+.editButton:hover {
+    background: url('../images/edit_small_act.png') no-repeat;  
+}
+
+.importButton {
+    background: url('../images/import_small.png') no-repeat;  
+    width:29px;
+    height:29px;  
+    margin-top: 6px; 
+    margin-right: 2px;
+    float:right;
+
+}
+
+
+.importButton:hover {
+    background: url('../images/import_small_act.png') no-repeat;  
+}
+
+
+.addButton, .custEditFromListing{
+    margin-right: 4px !important;
+    float:right !important;
+
+}
+
+.addButton, .refreshButton, .custEditFromListing {
+    margin-bottom: 10px !important;
+
+}
+
+.custEditFromListing {
+    margin-right: 0px !important;  
+}
+
+.noProductListed {
+    padding-top: 15px;
+    display: block;
+}
+
+.listedProduct {
+    display: block;
+    width: 100%;
+    height: auto;
+    padding-left:5px;
+    padding-right:5px;
+    margin-left: -5px;    
+}
+
+.listedProduct .editOptions {
+    font-size: 11px;
+    color: #333333;
+    visibility: hidden;
+    padding-bottom: 2px;
+    margin-left: 10px;
+    display: none;
+
+}
+
+.listedProduct:hover .editOptions {
+    visibility: visible;
+    display: block;
+}
+
+
+.tableForContent {
+    width: 400px;
+    margin-left: -5px;
+
+}
+
+
+.tableWrapper {
+    margin-left: 10px;
+    margin-right: 0;
+    margin-top: -15px;
+    width: 76%; 
+    float: left;
+}
+
+.tableWrapper form {
+    margin-top: 30px !important;
+}
+
+
+
+
+.tableWrapper .lastCol {
+    width: 60px !important; 
+    text-align: right;
+}
+
+.tableWrapper .dateCol {
+    width: 100px !important; 
+    text-align: center;
+}
+
+
+
+
+.tableWrapperRight {
+    margin-left: 30px;
+    margin-right: 0;
+    margin-top: 15px !important;
+    width: 19%;    
+    float: left;  
+    font-size: 14px;
+}
+
+#dashBoard .tableWrapperLeft {
+    width: 508px !important; 
+    margin-top: 15px !important;
+    margin-left: 15px;
+    margin-right: 0px;
+    float:left;
+}
+
+#dashBoard .tableWrapperLeft table {
+    width: 510px !important;
+}
+
+
+#dashBoard .tableWrapperRight {
+    width: 515px !important; 
+    margin-top: 15px !important;
+    float:left !important;
+}
+
+
+#dashBoard .tableWrapperRight table {
+    width: 520px !important;
+}
+
+#dashBoard .tableWrapperRight .idCol {
+    width: 25px !important;
+}
+
+#dashBoard .tableWrapperRight td .idCol {
+   text-align: center;
+}
+
+#dashBoard .tableWrapperRight a {
+    color: #08C !important;
+    text-decoration: none !important;
+    background: none !important;
+    text-decoration: none !important;
+    border-bottom: none !important;
+}
+
+#dashBoard .tableWrapperRight a:hover {
+    color: #003366 !important;
+    text-decoration: underline !important;
+}
+
+
+#dashBoard .tableWrapperCenter {
+    width: 210px !important; 
+    margin-top: 15px !important;
+    float:left !important;
+    margin-left: 35px;
+}
+
+#dashBoard .tableWrapperCenter .todoDt {
+    text-align: right;
+    display: block;
+    font-size: 9px;
+}
+
+
+#dashBoard .tableWrapperCenter .done, #dashBoard .tableWrapperCenter .done td {
+    background-color: #CCFFCC !important;
+}
+#dashBoard .tableWrapperCenter .done, #dashBoard .tableWrapperCenter .done td {
+    background-color: #CCFFCC !important;
+}
+
+#dashBoard .tableWrapperCenter .done:hover, #dashBoard .tableWrapperCenter .done:hover td {
+    background-color: #8FFF8F !important;
+}
+
+#dashBoard .tableWrapperCenter .overDeadLine, #dashBoard .tableWrapperCenter .overDeadLine td {
+    background-color: #FFB3B3 !important;
+}
+
+#dashBoard .tableWrapperCenter .overDeadLine:hover, #dashBoard .tableWrapperCenter .overDeadLine:hover td {
+    background-color: #FF7575 !important;
+}
+
+#dashBoard .showAll {
+    text-align: right;
+    width: 100%;
+    font-size: 10px;
+    margin-top: -15px;
+    padding-right: 15px !important;
+}
+
+#dashBoard h4 {
+    padding-bottom: 5px !important;
+}
+
+.tableWrapperRight ul {
+    list-style: none;
+
+}
+
+.tableWrapperRight li {
+    margin-left: -15px;  
+    margin-top: 5px;
+}
+
+.tableWrapperRight a {
+    color: black;
+    text-decoration: none;
+    border-bottom: 1px dotted #ba0000;
+}
+
+.tableWrapperRight .notImplemented {
+
+}
+
+.tableWrapperFull {
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: -15px;
+    width: 98%;
+
+}
+
+.tableWrapperFull td + td {
+    text-align: center;
+    width: 500px;
+}  
+
+.tableWrapperFull .table tbody tr:hover td, .table tbody tr:hover th {
+    background-color: white !important;
+}
+
+.tableWrapperFull .table tbody th:hover {
+    background-color: #F9F9F9 !important;
+}
+
+
+
+div#mapContainer{
+    position: relative !important;
+    bottom: 0;
+    top: 0;
+    width:700px;
+    min-height: 400px;
+    height: auto;
+}
+
+
+div#mapContainer img {
+    max-width: inherit;
+} 
+
+.tableWrapperRight i {
+    margin-right: 4px !important;    
+}
+
+.tableTitle {
+    background: url('../images/tb_title.png') repeat-x; 
+    height: 45px;
+    min-width: 30px;
+}
+.tableLeftTitle, .tableRightTitle {
+    width: 20px;
+    height: 45px;
+}
+.tableLeftTitle {
+    background: url('../images/tb_l_title.png') no-repeat;
+    float:left;  
+    margin-left: -20px;
+}
+.tableCenterTitle {
+    font-weight: bold;
+    line-height: 2.3em;
+    float:left;
+    color: white;  
+}
+.tableRightTitle {
+    background: url('../images/tb_r_title.png') no-repeat;
+    float:right;
+    margin-right: -20px;
+}
+
+.tableLeft, .tableRight {
+    width: 20px;
+    min-height: 20px; 
+
+}
+.tableContent {
+    width: 100%;
+    float:left;  
+
+}
+.tableLeft {
+    background: url('../images/tb_l.png') repeat-y;
+    float:left;  
+    min-height: 50px;
+    margin-left: -40px;
+    width: 100%;
+}
+.tableMidContent {
+    width: 100%;
+    float:left;  
+    margin-left: 0px;
+    padding-left:20px;
+}
+.tableRight {
+    background: url('../images/tb_r.png') repeat-y right top;
+    float:right; 
+    width: 100%;
+    min-height: 10px;
+    margin-right: -20px;
+}
+.cleaner {
+    clear: left;
+}
+.tableBottom {
+    clear:both;
+    height: 45px;
+    min-width: 30px;
+    background: url('../images/tb_down.png') repeat-x;
+}
+.tableLeftBottom, .tableRightBottom {
+    width: 20px;
+    height: 45px; 
+}
+.tableLeftBottom {
+    background: url('../images/tb_l_d.png') no-repeat;
+    float:left; 
+    margin-left: -20px;
+}
+.tableMidBottom {
+    background: url('../images/tb_r_d.png') no-repeat;
+    float:left;  
+    width:100%;
+}
+
+.tableRightBottom {
+    background: url('../images/tb_r_d.png') no-repeat;
+    float:right;  
+    margin-right: -20px;
+}
+
+
+
+
+
+
+
+div.flash {
+    color: black;
+    background: #FFF9D7;
+    border: 1px solid #E2C822;
+    padding: 1em;
+    margin: 1em 0;
+}
+
+a[href^="error:"] {
+    background: red;
+    color: white;
+}

@@ -1,0 +1,25 @@
+{extends none}
+
+{block content}
+    <div>
+            {form addEditProduct class => 'well'}
+                <table id = "addEdit">
+                <tr>
+                    <td>{label name /}{input name class => "span2", autofocus => TRUE,
+                                placeholder => "Celý název produktu"}</td>
+                        
+                    <td>{label version /}{input version class => "span1", autofocus => TRUE,
+                                placeholder => "1.0.0"}</td>
+                </tr>
+                              
+                <tr><td colspan="2">
+                    {label note /}{input note}                    
+                </td></tr>
+                <tr>
+                     <td colspan="2" class="submitSection">{label addSave /}{input addSave}</td>
+                </tr>
+                </table>    
+            {/form}
+        <div class="cleaner"></div>
+    </div>
+{/block}

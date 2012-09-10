@@ -1,0 +1,39 @@
+{block title}
+    <title>TachoScan s.r.o.: interní správa</title>
+{/block}
+
+{block content}
+    <div id="actionList">
+        <h3>Akce</h3>
+        <div class="tableWrapper">
+            <a n:href="Actions:" rel="tooltip" class = "btn btn-mini refreshButton toolTipUp" title = "Obnovit stránku"><i class="icon-refresh"></i></a>
+            <a href="#" onclick="showUrlInDialog('add-edit','P\u0159idání akce',400,545); return false;" class = "btn btn-success btn-mini toolTipUp addButton" title = "Přidat novou akci"><i class="icon-plus"></i></a>
+            <table class="table table-striped table-bordered table-condensed">    
+                {if $actions}
+                    <tr><th class = "dateCol">Uskutečněno</th><th>Předmět</th><th>Název firmy</th><th class = "lastCol"></th></tr>
+                    {foreach $actions as $action}
+                        <tr>
+                            <td class = "dateCol">{=date('d.m.Y',strtotime($action->date))}</td><td><a href="#" onclick="showUrlInDialog({link Actions:addEdit, id => $action->action_id, isEdited => true},'Zobrazení a editace akce',400,545);">{$action->subject}</a><td>{ifset $action->name}{$action->name}{else}<p class="neuveden">zákazník nenalezen</p>{/ifset}</td>
+                            <td class = "lastCol"> <a href="#" onclick="showUrlInDialog({link Actions:addEdit, id => $action->action_id, isEdited => true},'Editace akce',400,545);" rel="tooltip" title="Editovat akci" class = "btn btn-mini toolTipDown"><i class="icon-pencil"></i></a> <a href="{link delete!, id => $action->action_id}" title="Smazat záznam akce" data-confirm="Opravdu chcete smazat akci s předmětem {$action->subject}?" rel="tooltip" class = "btn btn-danger btn-mini toolTipDown"><i class="icon-trash"></i></a></td>
+                        </tr>                        
+                    {/foreach}                                
+                {else}
+                    <span class="noProductListed">Nejsou k dispozici žádná data</span>
+                {/if}
+            </table> 
+            {control pageChooser}
+        </div>
+        
+        <div class="tableWrapperRight">
+            <table class="table table-striped table-bordered table-condensed">   
+                <tr><th><i class="icon-signal"></i> Statistiky</th></tr>
+                <tr><td>
+                <ul>  
+                    <li><i class="icon-list-alt"></i>Provedených akcí: {$actionCount}</li>
+                </ul></td></tr>                 
+            </table>            
+        </div>
+
+        <div class="cleaner"></div>
+    </div>
+{/block}

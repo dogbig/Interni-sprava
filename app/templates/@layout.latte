@@ -1,0 +1,52 @@
+{**
+ * TachoScan s.r.o. interní správa - defaultní latte soubor
+ *
+ * @copyright  Copyright (c) 2011-2012 Michal Charvát
+ *
+ *}
+
+{includeblock '@layoutHead.latte'}
+<body>    
+    <div id="spinner" class="spinner" style="display:none;">
+        <img id="img-spinner" src="../images/loading.gif" alt="Načítání.."/>
+    </div>    
+    {if $flashes}   
+        <div id="logonFlashesh" n:foreach="$flashes as $flash">
+            <form class="well" action="" method="post">
+            {$flash->message}<br/>
+            <input type="submit" id="dialogCloser1" class="btn btn-success" value="OK">
+            <div class="cleaner"></div>
+            </form>
+        </div>
+    {/if}
+    
+    <div id="loginBox">
+        <div id="loggedName">{if !$user->isLoggedIn()} 
+        {form signInForm} 
+            {input username}{input password}<button n:input="login" title="Přihlásí vás na tomto PC trvale do systému"><i class="icon-off icon-white"></i>Přihlásit se</button>
+        {/form}  
+        {else}
+        <p>Přihlášen jako <a onclick="showUrlInDialog('/user-panel/viewprofile','Uživatelský panel',400,200); return false;" href="#">{$user->identity->username}</a></p> 
+        <form action="{link Homepage:logout}"><button value class="toolTipDown btn btn-mini btn-danger btn-logout" title="Odhlásí vás"><i class="icon-off icon-white"></i>Odhlásit se</button></form>
+        {/if}</div>        
+    </div>
+    <div id="header">
+        <img src = "{$basePath}/images/logo.png" id = "logo" alt="logo" /><h1 class = "small">TachoScan s.r.o.: interní správa</h1>
+    </div>
+
+    <div id = "Menu">
+        <div n:inner-foreach="$menuItems as $item => $link">
+            <a n:href="$link" n:class="$presenter->isLinkCurrent($link.'*')?current">{$item}</a>
+        </div>    
+    </div>
+<div id = "cleaner"></div>
+<div id = "wrapper">
+    <div id="content">
+        {include #content}
+            <div id = "about">
+            © M. Charvát 2011-2012
+            </div>
+    </div>
+</div> 
+</body>
+</html>

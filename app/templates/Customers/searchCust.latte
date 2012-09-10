@@ -1,0 +1,30 @@
+{extends none}
+
+{block content}
+    <div class = "searchBoxFixer">
+            {form searchBoxForm class => 'well'}
+                <table id = "addEdit">
+                <tr>
+                    <td colspan="2">{label cust /}{input cust class => "span3", autofocus => TRUE,
+                                placeholder => "název"}
+                </tr> 
+                <tr>
+                    <td colspan="2">{input onlyTr class => "checkbox inline"}{label onlyTr class => "rightLabel" /}</td>
+                </tr>
+                <tr>
+                    <td colspan="2">{label adr /}{input adr class => "span3",
+                                placeholder => "adresa, město, etc."}
+                </tr> 
+                <tr>
+                    <td colspan="2">{label hwkey /}{input hwkey class => "span2"}
+                </tr>
+                <tr>
+                    </td>                    
+                    <td colspan="2" class="submitSection">{label find1 /}{input find1}</td>
+                </tr>
+                </table>    
+            {/form}
+        <div class="cleaner"></div>
+    </div>
+{/block}
+

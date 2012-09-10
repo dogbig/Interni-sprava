@@ -1,0 +1,45 @@
+{extends none}
+
+{block content}
+    <div class = "addEditCust">
+            {form addEditCustomer class => 'well'}
+                <table id = "addEdit">
+                <tr>
+                    <td colspan="2">{label name /}{input name class => "span3", autofocus => TRUE,
+                                placeholder => "Název zákazníka"}</td>
+                </tr>
+                
+                <tr>
+                    <td colspan="2">{input trcenter class => "checkbox inline"}{label trcenter class => "rightLabel" /}</td>
+                </tr>
+                      
+                <tr>
+                    <td>{label ic /}{input ic class => "span2"}</td><td>{label dic class => "dic2" /}{input dic class => "span2"}</td>                     
+                </tr>
+                
+                <tr>
+                    <td colspan="2">{label adress /}{input adress class => "addEditCustAdrFix"}</td>                     
+                </tr>
+                
+                <tr>
+                    <td>{label tel /}{input tel class => "span2"}</td><td>{label tel2 class=> "addEditCuSecTelFix" /}{input tel2 class => "span2"}</td>                     
+                </tr>
+                
+                <tr>
+                    <td>{label email /}{input email class => "span2"}</td><td>{label hwkeynum /}{input hwkeynum class => "span2"}</td>                     
+                </tr>
+                
+                <tr>
+                    <td colspan="2">{label notes /}{input notes class => "addEditCustNoteFix"}</td>                   
+                </tr>
+                
+                
+                <tr>
+                     <td colspan="2" class="submitSection"><button id="btn-close" class="btn btn-danger" type="button">Zavřít</button> {label addSave /}{input addSave}</td>
+                </tr>
+                </table>    
+            {/form}
+        <div class="cleaner"></div>
+    </div>
+{/block}
+

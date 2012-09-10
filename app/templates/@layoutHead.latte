@@ -1,0 +1,54 @@
+{**
+ * TachoScan s.r.o. interní správa - Head latte soubor
+ *
+ * @copyright  Copyright (c) 2011-2012 Michal Charvát
+ *
+ *}
+
+<!DOCTYPE html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="description" content="">
+    <meta name="robots" content="{$robots}" n:ifset="$robots">
+    <meta charset="utf-8">
+
+    {include #title}
+
+    <link rel="stylesheet" media="screen,projection,tv" href="{$basePath}/css/screen.css" type="text/css">
+    <link rel="stylesheet" media="print" href="{$basePath}/css/print.css" type="text/css">
+    <link rel="shortcut icon" href="{$basePath}/favicon.ico" type="image/x-icon">   
+    <link rel="stylesheet" type="text/css" href="{$basePath}/css/timepicker.css">
+    <link rel="stylesheet" type="text/css" href="{$basePath}/css/jquery-ui-1.8.17.custom.css">
+    <link rel="stylesheet" type="text/css" href="{$basePath}/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="{$basePath}/css/bootstrap-responsive.css">
+    
+    
+    <!-- JavaScript -->
+    <script type="text/javascript" src="{$basePath}/js/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="{$basePath}/js/jquery-ui-1.8.17.custom.min.js"></script>
+        
+    <!-- NetteForms -->
+    <script type="text/javascript" src="{$basePath}/js/netteForms.js"></script>
+    
+    <!-- Custom Confirm Dialog -->
+    <script type="text/javascript" src="{$basePath}/js/confirmDialog.js"></script>
+        
+    <!-- DatePicker -->
+    <script type="text/javascript" src="{$basePath}/js/jquery.ui.datepicker-cs.js"></script>
+    <script type="text/javascript" src="{$basePath}/js/inputfix.datepicker.js"></script>
+    
+    <!-- Twitter Bootstrap w/ plugins -->
+    <script type="text/javascript" src="{$basePath}/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="{$basePath}/js/bootstrap-tooltip.js"></script>
+    
+  
+    <!-- Custom Js -->
+    <script type="text/javascript" src="{$basePath}/js/is.js"></script>
+    <script type="text/javascript" src="{$basePath}/js/dateformat.js"></script>
+
+    <!-- or IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    {block head}{/block}
+</head>

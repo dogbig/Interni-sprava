@@ -1,0 +1,99 @@
+{block title}
+    <title>TachoScan s.r.o.: interní správa</title>
+{/block}
+
+{block content}
+    <div>
+        <h3>Poslední zprávy systému</h3>
+        {if $flashes}         
+        <div class="msgbox" n:foreach="$flashes as $flash">
+            {$flash->message}
+        </div>
+        {else}
+           <p class="msgbox">žádné</p>
+        {/if}
+           
+        <h3>Správa uživatelů</h3>
+        <div class="tableWrapper">
+            <a n:href="Administration:" rel="tooltip" class = "btn btn-mini refreshButton toolTipUp" title = "Obnovit stránku"><i class="icon-refresh"></i></a>
+            <a href="#" onclick="showUrlInDialog('add-edit-user','P\u0159idání uživatele',297,340); return false;" class = "btn btn-success btn-mini toolTipUp addButton" title = "Přidat nového uživatele"><i class="icon-plus"></i></a>
+                <table class="table table-striped table-bordered table-condensed">
+                    {if $users}
+                        <tr><th>Uživatelské jméno</th><th class = "lastCol"></th></tr>
+                        {foreach $users as $listeduser}
+                                <tr><td>{$listeduser->username}</td><td class = "lastCol"> <a href="#" onclick="showUrlInDialog({link Administration:add-edit-user, id => $listeduser->id, isEdited => true},'Editace uživatele',297,340);" rel="tooltip" title="Editovat uživatele" class = "btn btn-mini toolTipDown"><i class="icon-pencil"></i></a> <a href="{link deleteUser!, id => $listeduser->id}" title="Smazat uživatele" data-confirm="Opravdu chcete smazat uživatele {$listeduser->username} včetně uživatelských dat?" rel="tooltip" class = "btn btn-danger btn-mini toolTipDown"><i class="icon-trash"></i></a></td></tr>                                                            
+                        {/foreach}                                
+                    {else}
+                        <span class="noProductListed">Nejsou k dispozici žádní uživatelé. Což je špatně!</span>
+                    {/if}
+                </table> 
+        </div>       
+       
+        <div class="tableWrapperRight">
+            <table class="table table-striped table-bordered table-condensed">   
+                <tr><th><i class="icon-info-sign"></i>Informace</th></tr>
+                <tr><td>
+                <ul>  
+                    <li>Verze IS: {$appver}</li>
+                    <li>Verze PHP: {$phpver}</li>
+                    <li>Verze Nette: {$nettever}</li>
+                </ul></td></tr>                 
+            </table>            
+        </div>
+        
+        
+        {if false}
+        <!-- OLD section only for dev -->     
+        <br /><br /><br />       
+        <h3>Dev. nástroje</h3><br /> 
+        <div class="tableWrapper">
+            <div class="tableTitle">
+                <div class="tableLeftTitle"></div>
+                <div class="tableCenterTitle">Generování dat pro distribuce (vývojářská část)</div>
+                <div class="tableRightTitle"></div>
+            </div>
+            <div class="tableContent">
+                <div class="tableRight">
+                    <div class="tableLeft">                    
+                        <div class="tableMidContent">    
+                            {control generateListData}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tableBottom">
+                <div class="tableLeftBottom"></div>
+                <div class="tableMidBottomt">
+                </div>
+                <div class="tableRightBottom"></div>
+            </div>            
+        </div>
+        <div class="tableWrapper">
+            <div class="tableTitle">
+                <div class="tableLeftTitle"></div>
+                <div class="tableCenterTitle">Generování dat zákazníků (vývojářská část)</div>
+                <div class="tableRightTitle"></div>
+            </div>
+            <div class="tableContent">
+                <div class="tableRight">
+                    <div class="tableLeft">                    
+                        <div class="tableMidContent">    
+                            {control generateCustomerData}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tableBottom">
+                <div class="tableLeftBottom"></div>
+                <div class="tableMidBottomt">
+                </div>
+                <div class="tableRightBottom"></div>
+            </div>            
+        </div>
+        
+        {/if}
+
+        
+        <div class="cleaner"></div>
+    </div>
+{/block}

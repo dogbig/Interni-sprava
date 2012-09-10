@@ -1,0 +1,53 @@
+{extends none}
+
+<head>   
+    <!-- JavaScript + FIXES for Ajax -->
+    <script type="text/javascript" src="{$basePath}/js/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="{$basePath}/js/jquery-ui-1.8.17.custom.min.js"></script>
+    <script type="text/javascript" src="{$basePath}/js/jquery.ui.datepicker-cs.js"></script>
+    <script type="text/javascript" src="{$basePath}/js/inputfix.datepicker.js"></script>   
+</head>
+
+<html><body>
+{block content}
+    <div>   
+         {form addEditList class => 'well'}
+                <table id = "addEdit">
+                <tr>
+                    <td colspan="2">{label date /}{input date, autofocus => FALSE}</td>
+                </tr>
+                
+                <tr>
+                    <td>
+                        {label company /}{input company_id, id => "cmp_id"}
+                        {input company class => "span2", id => "cmp", autofocus => TRUE}
+                    </td>        
+                    <td>
+                        <a id = "custSelectorButton" href="javascript:void(0);"
+                        title="Výběr zákazníka"
+                        onClick='window.open({plink Customers:selector},"Selector","width=850,height=480,status=0,location=no,resizable=no,");' rel="tooltip" class="btn custSelectorButton">
+                        <i class="icon-list-alt"></i>
+                        </a>
+                    </td>    
+                </tr>                     
+                   
+                <tr>
+                    <td>{label sw_num /}{input sw_num class => "span2", autofocus => FALSE,
+                                placeholder => "123-456"}</td>
+                    <td>{label quantity /}{input quantity class => "span1", autofocus => FALSE,
+                                placeholder => "12"}</td>
+                </tr>      
+                
+                    
+                <tr id="addEditListFix"><td colspan="2">
+                    {label note /}{input note}                    
+                </td></tr>
+                <tr>
+                     <td colspan="2" class="submitSection">{label addSave /}{input addSave}</td>
+                </tr>
+                </table>    
+            {/form}
+        <div class="cleaner"></div>
+    </div>
+{/block}
+</body></html>

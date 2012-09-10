@@ -1,0 +1,23 @@
+{block title}
+    <title>TachoScan s.r.o.: interní správa</title>
+{/block}
+
+{block content}
+    <div>
+        <h2>Přihlášení:</h2>
+        <div class="msgbox" n:foreach="$flashes as $flash">
+        {$flash->message}
+        </div>
+        {if !$user->isLoggedIn()}
+        {control signInForm}
+        {else}
+        Jste již přihlášen jako {$user->identity->username}. <a n:href="Login:logout">Odhlásit?</a>.
+        {/if}
+    </div>
+    <div id = "about">
+    <h3>O projektu:</h3>
+    <p>
+    Projekt vyvíjen v rámci Bc. projektu TUL FM studentem M. Charvátem.
+        </p>
+    </div>
+{/block}

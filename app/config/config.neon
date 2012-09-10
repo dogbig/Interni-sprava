@@ -1,0 +1,44 @@
+#
+# SECURITY WARNING: it is CRITICAL that this file & directory are NOT accessible directly via a web browser!
+#f
+# If you don't protect this directory from direct web access, anybody will be able to see your passwords.
+# http://nette.org/security-warning
+#
+common:
+	parameters:
+		database:
+			profiler: true
+			lazy: true
+	php: # PHP configuration
+		date.timezone: Europe/Prague
+		# session.save_path: "%tempDir%/sessions"
+		# zlib.output_compression: yes
+
+	services:
+		authenticator: 
+			class: Authenticator
+
+		authorizator:
+			class: Acl
+ 
+		userManager:
+			factory: UserManager::factory 
+		integrityManager:
+			factory: IntegrityManager::factory 
+      
+		userModel:
+			factory: User::factory 
+		
+
+production < common:
+	parameters:
+		database:
+			driver: mysql
+			host: HOST
+			database: DATABASE
+			username: USERNAME
+			password: PASS
+			charset: utf8
+development < common:
+
+console < common:

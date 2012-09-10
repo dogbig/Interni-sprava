@@ -1,0 +1,43 @@
+{extends none}
+{includeblock '../@layoutHead.latte'}
+
+{block head}
+    <script language="javascript" type="text/javascript">
+        var selectedId;
+        function SendUserToParent($selname,$selID)        
+        {
+            // var myVal = document.getElementById('mytxt').value;
+            window.opener.GetValueFromUserSelector($selname,$selID);
+            window.close();
+            return false;
+        }        
+    </script>    
+{/block}
+
+
+{block title}
+    <title>TachoScan s.r.o.: interní správa</title>
+{/block}
+
+{block content}
+       <div class = "selectorDiv">
+        <div id="userListing">
+        <h3>Výběr cílového uživatele</h3>
+            <div class="tablewrapperSelector">    
+                <table class="table table-striped table-bordered table-condensed">
+                        {if $users}
+                            <tr><th class="idCol">ID</th><th class="nameCol">Název</th></tr>
+                            {foreach $users as $user}
+                                    <tr><td class="idCol">{$user->id}</td><td class="nameCol"><a href="#" onclick="return SendUserToParent({$user->username},{$user->id});">{$user->username}</td></tr>                                                            
+
+                            {/foreach}                                
+                        {else}
+                            <span class="noProductListed">Nejsou k dispozici žádná data. Což je špatně! Kontaktuje administrátora této aplikace.</span>       
+                        {/if}
+                </table> 
+            </div>  
+        </div>              
+        <div class="cleaner"></div>
+    </div>
+   
+{/block}
